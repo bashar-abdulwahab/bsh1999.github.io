@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{message.tags}}">
+    {{message}}
+</div>
+{% endfor %}
+{% endif %}
+<h2>التدوينات</h2>
+{% for post in posts %}
+    <div class="border p-3 mb-4" style="border: 1px solid #ccc;">
+        <img class="img-fluid rounded-circle botder m-2" width="70px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2WyqsoYH4W0b04DbSd5GUXN5xRy-0ou4e1w&usqp=CAU" alt="صورة الناشر">
+        <span class="text-secondary">نشر في {{post.post_date|date:'d-m-Y'}}</span>
+        <h3><a style="text-decoration: none;" class="text-dark" href="{% url 'details' post.pk %}">{{post.title}}</a></h3>
+        <p>{{post.content}}</p>
+        
+    </div>
+
+{% endfor %}
+{% endblock %}
+
+<!--<h3>التدوينات</h3> 
+
+ 
+
+-->
